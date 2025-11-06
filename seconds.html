@@ -10,8 +10,14 @@
         }
         
         const now = new Date();
-        const nineOclock = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 21, 30, 0);
-        window.secondsLeft = Math.floor((nineOclock - now) / 1000);
+        let storedHour = localStorage.getItem('terminal');
+        if (!storedHour) {
+            const defaultTerminalHour = 21;
+            localStorage.setItem('terminal', defaultTerminalHour);
+            storedHour = defaultTerminalHour;
+        }
+        const terminal = new Date(now.getFullYear(), now.getMonth(), now.getDate(), storedHour, 30, 0);
+        window.secondsLeft = Math.floor((terminal - now) / 1000);
         
         Array.from({length: 57600}).map(index => {
             if (window.secondsLeft <= 0) return;
