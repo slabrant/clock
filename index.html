@@ -49,8 +49,9 @@
     <div id="hour"></div>
 </body>
     <script>
-        document.getElementById('second').style.rotate = new Date().getSeconds() * 6 + 'deg';
-        document.getElementById('minute').style.rotate = new Date().getMinutes() * 6 + 'deg';
-        document.getElementById('hour').style.rotate = (new Date().getHours() % 12) * 30 + (new Date().getMinutes() / 60) * 30 + 'deg';
+        const date = new Date();// getMilliseconds() * 1000
+        document.getElementById('second').style.rotate = (date.getSeconds() + date.getMilliseconds()/1000) * 6 + 'deg';
+        document.getElementById('minute').style.rotate = date.getMinutes() * 6 + 'deg';
+        document.getElementById('hour').style.rotate = ((date.getHours() % 12) + (date.getMinutes() / 60)) * 30 + 'deg';
     </script>
 </html>
