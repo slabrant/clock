@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Clock</title>
+    <style>
+        @keyframes rotateHand {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #second {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background-color: red;
+            top: 50px;
+            left: 98px;
+            transform-origin: bottom center;
+            animation: rotateHand 60s linear infinite;
+        }
+        #minute {
+            position: absolute;
+            width: 3px;
+            height: 80px;
+            background-color: blue;
+            top: 70px;
+            left: 98.5px;
+            transform-origin: bottom center;
+            animation: rotateHand 3600s linear infinite;
+        }
+        #hour {
+            position: absolute;
+            width: 4px;
+            height: 70px;
+            background-color: black;
+            top: 80px;
+            left: 97px;
+            transform-origin: bottom center;
+            animation: rotateHand 43200s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="second"></div>
+    <div id="minute"></div>
+    <div id="hour"></div>
+</body>
+    <script>
+        document.getElementById('second').style.rotate = new Date().getSeconds() * 6 + 'deg';
+        document.getElementById('minute').style.rotate = new Date().getMinutes() * 6 + 'deg';
+        document.getElementById('hour').style.rotate = (new Date().getHours() % 12) * 30 + (new Date().getMinutes() / 60) * 30 + 'deg';
+    </script>
+</html>
