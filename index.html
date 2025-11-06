@@ -49,7 +49,7 @@
     <div id="hour"></div>
 </body>
     <script>
-        const date = new Date();// getMilliseconds() * 1000
+        const date = new Date();
         document.getElementById('second').style.rotate = (date.getSeconds() + date.getMilliseconds()/1000) * 6 + 'deg';
         document.getElementById('minute').style.rotate = date.getMinutes() * 6 + 'deg';
         document.getElementById('hour').style.rotate = ((date.getHours() % 12) + (date.getMinutes() / 60)) * 30 + 'deg';

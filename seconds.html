@@ -11,7 +11,7 @@
         
         const now = new Date();
         const nineOclock = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 21, 30, 0);
-        window.secondsLeft = Math.floor((startOfTomorrow - now) / 1000);
+        window.secondsLeft = Math.floor((nineOclock - now) / 1000);
         
         Array.from({length: 57600}).map(index => {
             if (window.secondsLeft <= 0) return;
