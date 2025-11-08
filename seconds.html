@@ -1,12 +1,13 @@
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Seconds Left in Day</title>
     </head>
-    <body></body>
+    <body style="word-wrap: break-word; line-height: 50%;"></body>
     <script>
         function updateSecondsLeft() {
             if (document.body.innerText.length <= 0) return;
-            document.body.innerText = document.body.innerText.slice(0, -2);
+            document.body.innerText = document.body.innerText.slice(0, -1);
         }
         
         const now = new Date();
@@ -19,11 +20,13 @@
         const terminal = new Date(now.getFullYear(), now.getMonth(), now.getDate(), storedHour, 30, 0);
         window.secondsLeft = Math.floor((terminal - now) / 1000);
         
+        let newBody = '';
         Array.from({length: 57600}).map(index => {
             if (window.secondsLeft <= 0) return;
-            document.body.append(`. `);
+            newBody += `■`;
             window.secondsLeft--;
         })
+        document.body.innerText = newBody;
         setInterval(updateSecondsLeft, 1000);
     </script>
 </html>
